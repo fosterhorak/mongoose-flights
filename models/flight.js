@@ -16,8 +16,8 @@ const flightSchema = new Schema({
     flightNo: {
         type: Number,
         required: true,       
-        min: 11, 
-        max: 9998
+        min: 10, 
+        max: 9999
     },
     departs: {
         type: Date,
@@ -26,6 +26,9 @@ const flightSchema = new Schema({
             // ***need to push date forward one year (how??)
         }
     }, 
+}, {
+    //add creatAt and updatedAt properties
+    timestamps: true
 });
 
 //compile shema into model and export
