@@ -21,17 +21,28 @@
     </select>  
   </label><br>
   
-  <label>Flight Number (10-9999):
+  <label>Flight Number:
     <input type="text" name="flightNo">
+    <small>*Only 10-9999 are valid</small>
   </label><br>
   
-  <label>Departure Date:
+  <label>Departure Date & Time:
     <input type="datetime-local" name="departs">
+  </label><br><br>
+
+  <label>Destination Airport:
+    <select name="airport">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+    </select>  
   </label><br>
-
-  
+  <label>Arrival Date & Time:
+    <input type="datetime-local" name="departs">
+  </label><br><br>
   <input type="submit" value="Add Flight">
-
 </form>
 
 <%- include('../partials/footer') %>
