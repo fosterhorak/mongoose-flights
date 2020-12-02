@@ -12,7 +12,7 @@
   </label><br>
   
   <label>Airport:
-    <select name="airport">
+    <select name="airport" value = "DEN">
         <option value="AUS">AUS</option>
         <option value="DFW">DFW</option>
         <option value="DEN">DEN</option>
@@ -27,9 +27,9 @@
   </label><br>
   
   <label>Departure Date & Time:
-    <input type="datetime-local" name="departs">
+    <input type="datetime-local" name="departs" value="<%= departsDate %>" >
   </label><br><br>
-
+<!--
   <label>Destination Airport:
     <select name="airport">
         <option value="AUS">AUS</option>
@@ -42,6 +42,7 @@
   <label>Arrival Date & Time:
     <input type="datetime-local" name="departs">
   </label><br><br>
+   -->
   <input type="submit" value="Add Flight">
 </form>
 

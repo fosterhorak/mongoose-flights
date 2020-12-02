@@ -25,9 +25,11 @@ function create(req, res) {
 }
 
 function newFlight(req, res) {
+    
     const newFlight = new Flight();
-    dt = newFlight.departs;
+    const dt = newFlight.departs;
     const departsDate = dt.toISOString().slice(0,16);
+    console.log(departsDate);
     res.render('flights/new', {departsDate, title: "Create New Flight"});
 }
 

@@ -36,12 +36,12 @@ const flightSchema = new Schema({
     departs: {
         type: Date,
         default: function() {
-            let today = new Date().getDate();
-            let thisMonth = new Date().getMonth();
-            let thisYear = new Date().getFullYear();
-            let nextYear = thisYear + 1;
-            //console.log(`${thisMonth}/${today}/${nextYear}`);
-            return (`${thisMonth}/${today}/${nextYear}`);
+            let d = new Date();
+            let year = d.getFullYear();
+            let month = d.getMonth();
+            let day = d.getDate();
+            let c = new Date(year +1, month, day);
+            return c;
         }
     },
     destinations:  [destinationSchema]
