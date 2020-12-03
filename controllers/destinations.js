@@ -1,4 +1,4 @@
-var Destination = require('../models/flight');
+var Flight = require('../models/flight');
 
 module.exports = { 
     create
@@ -7,14 +7,28 @@ module.exports = {
 
 
 function create(req, res) {
-    const destination = new Destination(req.body);
-    flight.save(function(err) {
-        // handle errors
-        if (err) return res.render('flights/new');
-        console.log(flight);
-        //redirect to flight list ('/flights')
-        res.redirect('/flights');
-    });
+   //find flight info first
+    Flight.findById(req.params.id, function(err, flight) {
+        //const airport = req.body.airport;
+        //const arrival = req.body.arrival
+        flight.destinations.push(req.body);
+        flight.save(function(err) {
+            res.redirect(`/flights/${req.params.id}`);
+                            // could also use flight._id
+        }) 
+    })
+   //access departures
+   
+   
+   
+    // const destination = new Destination(req.body);
+    // flight.save(function(err) {
+    //     // handle errors
+    //     if (err) return res.render('flights/new');
+    //     console.log(flight);
+    //     //redirect to flight list ('/flights')
+    //     res.redirect('/flights');
+    // });
 }
 
 
