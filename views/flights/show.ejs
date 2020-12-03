@@ -2,11 +2,12 @@
 
 <section id="show-page">
     
-    <div><strong>Flight No.: </strong><%= flight.flightNo %></div><br>
+    <div><strong>Flight No. : </strong><%= flight.flightNo %></div><br>
     <div><strong>Airline: </strong><%= flight.airline %></div><br>
     <div><strong>Airport: </strong><%= flight.airport %></div><br>
     <div><strong>Departure Date & Time: </strong><%= flight.departs %></div><br>
 
+    <!-- show destinations -->
     <div class="show-destinations">
         <h4><strong>Destinations:</strong></h4>
         <table>
@@ -26,35 +27,58 @@
             </tbody>
         </table>
     </div>
+    <!-- add new destinations -->
+    <form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+        <h4><strong>Add New Flight Destination:</strong></h4>
+        <label>Select Destination Airport:
+            <select name="airport">
+    <!--BONUS: only show available airports (remove departure location and arrivals already selected)-->
+                <option value="AUS">AUS</option>
+                <option value="DFW">DFW</option>
+                <option selected = "selected" value="DEN">DEN</option>
+                <option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+            </select>  
+        </label><br>
+        <label>Arrival Date & Time:
+            <input type="datetime-local" name="arrival"  >
+        </label><br>
+        <input type="submit" value="Add Destination">
+    </form>
+    
+    <!-- show tickets -->
+    <div class="show-tickets">
+        <h4><strong>Tickets:</strong></h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Seat</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% tickets.forEach(function(t) { %>
+                <tr>
+                    <td><%=t.seat%></td>
+                    <td><%=t.price%></td>
+                </tr>
+            <% }); %>
+
+            </tbody>
+        </table>
+    </div>
+    <a href="/flights/<%=flight._id%>/tickets/new" <%- title === 'Add Flight' ? 'class="active"' : '' %>>ADD TICKET</a>
+
+    <!-- add new tickets -->
+   
+
+
 
 </section>
-<br><br>
-<!-- add new destinations -->
-
-<form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
-
-    <h4><strong>Add New Flight Destination:</strong></h4>
-    <label>Select Destination Airport:
-        <select name="airport">
-            <!--only show available airports (minus departure local and already selected)-->
-            <option value="AUS">AUS</option>
-            <option value="DFW">DFW</option>
-            <option selected = "selected" value="DEN">DEN</option>
-            <option value="LAX">LAX</option>
-            <option value="SAN">SAN</option>
-        
-        </select>  
-      </label><br>
-      
-      
-    <label>Arrival Date & Time:
-        <input type="datetime-local" name="arrival"  >
-    </label><br>
 
 
-    <input type="submit" value="Add Destination">
 
-</form>
+
 
 
 <%- include('../partials/footer') %>
